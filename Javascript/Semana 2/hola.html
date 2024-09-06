@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolución de Precios</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Esta sección de script será completada con el resultado del código Node.js
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        
+        function drawChart() {
+            let dataDinamica = [['Date', 'Low']];
+            // Los datos se agregarán aquí dinámicamente por el código Node.js
+            %DATA_POINTS%
+
+            var data = google.visualization.arrayToDataTable(dataDinamica);
+
+            var options = {
+                title: 'Evolución de Precios',
+                curveType: 'none',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+
+    <h3>Instrucciones para ejecutar:</h3>
+    <p>Ejecuta el siguiente código Node.js para generar los datos dinámicos y reemplazarlos en el área designada (%DATA_POINTS%)</p>
+    
+    <pre>
+        const fs = require('fs');
+        const readline = require('readline');
+
+        async function readCSV(filePath) {
+            const fileStream = fs.createReadStream(filePath);
+            const rl = readline.createInterface({
+                input: fileStream,
+                crlfDelay: Infinity
+            });
+
+            let scriptDataPoints = "";
+
+            let isFirstLine = true;
+
+            for await (const line of rl) {
+                if (isFirstLine) {
+                    isFirstLine = false; // Ignorar la cabecera
+                    continue;
+                }
+                const columns = line.split(',');
+                const date = columns[0]; // Primera columna (Date)
+                const low = columns[3];  // Cuarta columna (Low)
+
+                scriptDataPoints += \`dataDinamica.push(['\${date}', \${parseFloat(low)}]);\n\`;
+            }
+
+            // Reemplazar %DATA_POINTS% en el archivo HTML
+            fs.readFile('chart.html', 'utf8', (err, data) => {
+                if (err) throw err;
+                const updatedHtml = data.replace('%DATA_POINTS%', scriptDataPoints);
+
+                fs.writeFile('chart_updated.html', updatedHtml, (err) => {
+                    if (err) throw err;
+                    console.log('El archivo chart_updated.html se ha creado exitosamente.');
+                });
+            });
+        }
+
+        readCSV('path_to_your_file/TSLA.csv');
+    </pre>
+</body>
+</html>

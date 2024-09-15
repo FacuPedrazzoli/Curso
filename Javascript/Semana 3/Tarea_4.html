@@ -32,7 +32,6 @@
 
             let drawChart = () => {
                 let resultado = collatz(24)
-
                 let valores = resultado.sequence
                 let iteraciones = resultado.iterations
                 let dataDinamica = [['Valores', 'Iteraciones']]
@@ -40,14 +39,12 @@
                 for (let i = 0; i < valores.length; i++) {
                     dataDinamica.push([iteraciones[i], valores[i]])
                 }
-                
                 var data = google.visualization.arrayToDataTable(dataDinamica)
                 var options = {
                     title: 'Grafico de Collatz',
-                    curveType: 'function',
+                    curveType: 'none',
                     legend: { position: 'bottom' }
                 };
-
                 var chart = new google.visualization.LineChart(document.getElementById('curve_chart'))
                 chart.draw(data, options)
             };

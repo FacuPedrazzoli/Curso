@@ -1,4 +1,3 @@
-
 let primos = [2, 3];
 let noPrimos = [1,4]
 let verificarNumero = 3;

@@ -1,4 +1,3 @@
-
 //En esta tarea tenos que definir una funcion de la conjetura collatz
 function collatz(n) {
     while (n !== 1){
@@ -7,8 +6,7 @@ function collatz(n) {
         } else {
             n = n * 3 + 1
         }
-    }  
-    return n
+    }   return n
 }
 
 collatz(6)
@@ -42,4 +40,3 @@ function prueba(st){
         console.log(`El numero que se ingreso fue el ${st} y termino en ${x}`)
     }
 }
-

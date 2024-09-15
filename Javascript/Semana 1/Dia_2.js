@@ -1,10 +1,8 @@
-
 //Formato no recomendable para realizar el calculo
 
 const ene = 100 * 1.03
 const feb = ene * 1.04
 const mar = feb * 1.03
-
 const trimestre = mar - 100
 
 console.log(trimestre)
@@ -12,11 +10,11 @@ console.log("Hola como estas??")
 
 // Estos con los tipos de datos simples
 
-//      x1 = 3
-//      x2 = "Hola"
-//      x3 = []
-//      x4 = {}
-//      x5 = null
+let x1 = 3
+let x2 = "Hola"
+let x3 = []
+let x4 = {}
+let x5 = null
 
 //Formato mas recomendable de como relizar esta cuenta
 

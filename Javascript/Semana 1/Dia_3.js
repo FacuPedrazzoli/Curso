@@ -1,5 +1,5 @@
 
-//For canonico (El ejemplo mas nofmral de todos) ningun elemento de los 3 es obligatorio.
+//For canonico (El ejemplo mas normal de todos) ningun elemento de los 3 es obligatorio.
 
 for (let x = 1 ; x <= 10 ; x ++){
     if (x % 2 === 0){                           //Esta es la forma de usar un if.
@@ -7,22 +7,6 @@ for (let x = 1 ; x <= 10 ; x ++){
     } else {                                    //Esta es la forma de usar un else.
         console.log(`El ${x} es inpar.`)
     }
-}
-
-function ver(st) {                              //Asi definimos una funcion
-    console.log(st)
-}
-
-function suma(x,y) {                            //Definimos una funcion que necesita 2 parametros
-    return x + y
-}
-
-function verHTML(st) {                          //Definimos una funcion con algo de HTML
-    console.log("<hr />")
-    console.log(st)
-    console.log("<hr />")
-    console.log("Esta es una prueba de como se escribe el hr")
-    console.log("<hr>")
 }
 
 function juego(jugador_1,jugador_2) {           //Definimos una funcion que es el juego de piedra, papel o tijera
@@ -46,11 +30,6 @@ function juego(jugador_1,jugador_2) {           //Definimos una funcion que es e
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-console.log("\n")
-
-ver(suma(20,8))                                 //Aca mostramos la funcion suma() con la funcion ver()
-//verHTML("!Hola mundo¡")
-console.log("\n")
 
 let x = juego("piedra","tijera")
 let resultado = ["Empate","Gana Facu","Gana Santi"]
